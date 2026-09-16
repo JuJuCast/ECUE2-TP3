@@ -10,5 +10,17 @@ public class Rectangle {
         this.longueur = longueur;
         this.largeur = largeur;
     }
+
+    public Rectangle(double x, double y, double longueur, double largeur) {
+        this.origine = new Point(x, y); 
+        this.longueur = longueur;
+        this.largeur = largeur;
+    }
+
+
+
+
+
+
 }
 
