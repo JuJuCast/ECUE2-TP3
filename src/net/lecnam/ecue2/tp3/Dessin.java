@@ -11,6 +11,7 @@ public class Dessin {
         this.nbRectangles = 0;
     }
 
+    // Ajoute un rectangle dans le tableau s'il reste de la place
     public void ajouter(Rectangle r) {
         if (this.nbRectangles < 10) {
             this.lesRectangles[this.nbRectangles] = r;
@@ -20,6 +21,24 @@ public class Dessin {
         }
     }
 
+    // Recherche et retourne le plus grand rectangle
+    public Rectangle retournePlusGrandRectangle() {
+        if (this.nbRectangles == 0) {
+            return null;
+        }
+
+        Rectangle plusGrand = this.lesRectangles[0];
+
+        for (int i = 1; i < this.nbRectangles; i++) {
+            if (this.lesRectangles[i].surface() > plusGrand.surface()) {
+                plusGrand = this.lesRectangles[i];
+            }
+        }
+
+        return plusGrand;
+    }
+
+    // Calcule la somme des surfaces de tous les rectangles
     public double surfaceTotale() {
         double somme = 0;
         for (int i = 0; i < this.nbRectangles; i++) {
@@ -27,6 +46,8 @@ public class Dessin {
         }
         return somme;
     }
+
+    // Translate tous les rectangles du dessin
     public void translateTous(double dx, double dy) {
         for (int i = 0; i < this.nbRectangles; i++) {
             this.lesRectangles[i].translate(dx, dy);
@@ -38,7 +59,7 @@ public class Dessin {
 
         Rectangle r1 = new Rectangle(1.0, 2.0, 10.0, 5.0);
         Rectangle r2 = new Rectangle(0.0, 0.0, 4.0, 3.0);
-        Rectangle r3 = new Rectangle(0.0, 0.0, 4.0, 3.0);
+        Rectangle r3 = new Rectangle(0.0, 0.0, 12.0, 6.0);
 
         d.ajouter(r1);
         d.ajouter(r2);
@@ -46,6 +67,11 @@ public class Dessin {
 
         System.out.println("Surface totale du dessin : " + d.surfaceTotale());
 
-        d.translateTous(2.0, 3.0);
+        // Test de la translation globale
+        System.out.println("Le rectangle le plus grand est : " + d.retournePlusGrandRectangle());
+
+        // Test du plus grand rectangle
+        Rectangle plusGrand = d.retournePlusGrandRectangle();
+
     }
 }
