@@ -30,6 +30,16 @@ public class Rectangle {
         return (point.x >= this.origine.x) && (point.x <= this.origine.x + this.largeur) &&
                 (point.y >= this.origine.y) && (point.y <= this.origine.y + this.longueur);
     }
+    public boolean equals(Point point, double largeur, double longueur){
+        return (point.x == this.origine.x) && (point.y == this.origine.y) && (longueur == this.longueur) &&
+                (largeur == this.largeur);
+    }
+    public String toString() {
+        return "Rectangle [Origine=" + this.origine
+                + ", Largeur=" + this.largeur
+                + ", Longueur=" + this.longueur
+                + ", Surface=" + this.retourneSurface() + "]";
+    }
 
 
 
@@ -49,11 +59,18 @@ public class Rectangle {
         r2.translate(1.0, 2.0);
         System.out.println("Origine après translation : " + r2.origine.x + ", " + r2.origine.y);
 
+        // Test de la contient()
         Point pDedans = new Point(5.0, 6.0);
         Point pDehors = new Point(0.0, 0.0);
 
         System.out.println("r2 contient (5, 6) ? " + r2.contient(pDedans));
         System.out.println("r2 contient (0, 0) ? " + r2.contient(pDehors));
+
+        // Test de equals()
+        System.out.println("les rectangles sont indentiques ? " + r1.equals(r2));
+
+        // Test de toString()
+        System.out.println("Le rectangle r1 : " + r1.toString());
     }
 }
 
