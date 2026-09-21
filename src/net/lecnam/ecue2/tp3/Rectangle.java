@@ -18,6 +18,9 @@ public class Rectangle {
         this.longueur = longueur;
         this.largeur = largeur;
     }
+    public double surface() {
+        return this.longueur * this.largeur;
+    }
 
     public double retourneSurface() {
         return this.largeur * this.longueur;
